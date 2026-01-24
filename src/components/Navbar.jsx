@@ -1,19 +1,34 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "../assets/react.svg";
+import "./styling/Navbar.css";
 
 function Navbar() {
   return (
     <>
-      <nav className="navbar">
-        <Link to="/" className="logo">
-          <img width="100" height="100" src={logo} alt="Logo" />
-        </Link>
+      <div className="main-container">
+        <NavLink to="/" className="nav-logo">
+          <img className="logo" width="50" height="50" src={logo} alt="Logo" />
+          <p>DietIQ</p>
+        </NavLink>
 
-        <Link to="/home">Home</Link>
-        <Link to="/content">Content</Link>
-        <Link to="/about">About</Link>
-        <Link to="/join">Join</Link>
-      </nav>
+        <nav className="navbar">
+          <NavLink className="nav-link" to="/home">
+            Home
+          </NavLink>
+          <NavLink className="nav-link" to="/content">
+            Content
+          </NavLink>
+          <NavLink className="nav-link" to="/about">
+            About
+          </NavLink>
+          <NavLink className="nav-link" to="/">
+            Contact
+          </NavLink>
+          <NavLink className="nav-link" to="/join">
+            Join
+          </NavLink>
+        </nav>
+      </div>
     </>
   );
 }
