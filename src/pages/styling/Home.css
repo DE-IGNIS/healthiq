@@ -1,0 +1,43 @@
+.page-title {
+  text-align: center;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Sans Unicode";
+}
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Sans Unicode";
+  margin-bottom: 0;
+  transition: transform 0.25s ease-out;
+  border-radius: 7px;
+}
+.card h2 {
+  text-align: center;
+}
+.card p {
+  text-align: center;
+}
+.card:hover {
+  cursor: pointer;
+  transform: translateY(-8px);
+  background-color: aquamarine;
+}
+.feature-link {
+  text-decoration: none;
+  color: #b25cef;
+}
+
+/* earlier tried flex but grid proved to be better */
+/* .container {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      padding: 10px 14px;
+      border-radius: 10px;
+    } */
