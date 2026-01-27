@@ -29,8 +29,8 @@ function Home() {
           </div>
           <div className="card">
             <Link className="feature-link" to="feature4">
-              <h2>Feature 4</h2>
-              <p>Use this feature 4 to explore our website</p>
+              <h2>Diet Plan Generator</h2>
+              <p>AI enhanced diet plannner/generator</p>
             </Link>
           </div>
           <div className="card">
