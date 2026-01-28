@@ -1,38 +1,68 @@
 import "./styling/Landing.css";
 import food_img from "../assets/landing_food.webp";
+import logo from "../assets/react.svg";
 
 function Landing() {
   return (
-    <>
-      <div className="landing-container">
-      <h1>This is the Landing page</h1>
-        <img
-          className="landing-page-img"
-          src={food_img}
-          alt="landing-page-food"
-        />
-        <p className="overlap-para">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim iste
-          quam mollitia aspernatur laborum porro, voluptate temporibus inventore
-          quis? Deserunt harum sunt inventore maiores totam amet recusandae
-          facere et aut.
-        </p>
-        <div className="landing-content">
-          <p className="landing-para">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam
-            fugit, deleniti quis autem laboriosam officiis cum, ipsam id impedit
-            aliquid provident ab? Esse, cupiditate? Quam repellendus magnam id
-            iure reiciendis.
-          </p>
-          <p className="landing-para">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam
-            fugit, deleniti quis autem laboriosam officiis cum, ipsam id impedit
-            aliquid provident ab? Esse, cupiditate? Quam repellendus magnam id
-            iure reiciendis.
+    <div className="landing-wrapper">
+
+      {/* HERO SECTION */}
+      <section className="hero-section">
+
+        <div className="hero-card">
+          <div className="hero-card-header">
+            <img src={logo} alt="DietIQ" />
+            <h3>DietIQ</h3>
+          </div>
+
+          <h2>Health Care by Community & AI</h2>
+
+          <p>
+            AI-driven, multilingual health intelligence
+            for inclusive care.
           </p>
         </div>
-      </div>
-    </>
+
+        <img
+          src={food_img}
+          alt="Healthy food"
+          className="hero-image"
+        />
+
+      </section>
+
+      {/* CONTENT SECTION */}
+      <section className="content-section">
+
+        <div className="content-left">
+          <h2>Community Health, Powered by AI</h2>
+          <p>
+            Access to reliable health and nutrition guidance remains a major
+            challenge in semi-urban and rural communities. Misinformation,
+            language barriers, low digital literacy, and lack of localized
+            support often prevent timely health decisions. As a result,
+            preventable health issues, poor nutrition, and sanitation-related
+            risks continue to impact community well-being.
+            <br /><br />
+            DietIQ addresses this gap by combining artificial intelligence,
+            community knowledge, and multilingual accessibility.
+          </p>
+        </div>
+
+        <div className="content-right">
+          <h3>Our Mission</h3>
+          <p>
+            To empower communities with accessible, AI-driven health
+            intelligence that is simple, multilingual, and culturally relevant —
+            enabling early detection, reducing misinformation, and improving
+            overall community well-being through collective participation and
+            trust.
+          </p>
+        </div>
+
+      </section>
+
+    </div>
   );
 }
 

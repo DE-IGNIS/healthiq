@@ -1,109 +1,126 @@
 .main-container {
-  /* background: #d1d9e6;  */
-  background: lab(73.79% -9.29 -40.5);
-  padding: 8px 14px;
-  border-radius: 10px;
+  background: #ffffff;
+  padding: 14px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+/* LOGO WRAPPER */
 .nav-logo {
-  text-decoration: none;
   display: flex;
-  justify-content: left;
-  flex-wrap: wrap;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.25s ease;
 }
 
+/* logo image */
+.logo {
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+/* text */
 .nav-logo p {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Sans Unicode";
-  color: rgb(0, 0, 0);
-  padding-left: 10px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #214e4a;
+  margin-left: 10px;
+  transition: color 0.25s ease;
 }
 
-.logo {
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+/* hover effect */
+.nav-logo:hover .logo {
+  transform: scale(1.05);
+  filter: drop-shadow(0 4px 8px rgba(138, 207, 193, 0.6));
 }
 
-.logo:hover {
-  /* infinite spin animation (avoid) */
-  /* animation: spin 0.8s linear infinite; */
-  transform: rotate(180deg);
+.nav-logo:hover p {
+  color: #2f7d70;
 }
 
-.logo-text {
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.logo-text:hover {
-  transform: rotate(360deg);
-}
-
-/* spin animation might add in future */
-/* @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
-
+/* NAV LINKS */
 .navbar {
   display: flex;
-  gap: 12px;
+  align-items: center;
+  gap: 26px;
 }
 
 .nav-link {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Sans Unicode";
-  position: relative; 
   text-decoration: none;
-  color: #0f172a;
+  color: #214e4a;
   font-size: 16px;
-  padding: 8px 14px;
-  border-radius: 6px;
-
-  transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.35s ease,
-    background 0.35s ease; 
+  font-weight: 500;
+  position: relative;
+  padding: 6px 2px;
 }
 
+/* underline hover */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: #8acfc1;
+  transition: width 0.25s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* JOIN BUTTON */
 .nav-link-join {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Sans Unicode";
-  position: relative; 
+  margin-left: 16px;
+  background: #8acfc1;
+  color: #ffffff;
+  padding: 8px 22px;
+  border-radius: 24px;
+  font-size: 15px;
+  font-weight: 600;
   text-decoration: none;
-  color: #0f172a;
-  font-size: 16px;
-  padding: 8px 14px;
-  border-radius: 6px;
-
-  transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.35s ease,
-    background 0.35s ease; 
-}
-
-.nav-link:hover {
-  transform: translateY(-6px); 
-  background: #23e6a2;
-  /* hover we get green */
-  /* box-shadow: 0 8px 20px rgba(17, 243, 164, 0.82);  */
-  
-  /* hover we get yellow */
-  box-shadow: 0 8px 20px rgba(226, 241, 59, 0.82); 
+  transition: background 0.25s ease;
 }
 
 .nav-link-join:hover {
-  transform: translateY(-6px); 
-  background: #f79710;
-  box-shadow: 0 8px 20px rgba(226, 241, 59, 0.82); 
+  background: #76bdb0;
 }
 
-.nav-link:not(:hover) {
-  transform: translateY(0);
+/* LOGO WRAPPER */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.nav-link-join:not(:hover) {
-  transform: translateY(0);
+/* LOGO ICON */
+.logo {
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
+
+/* LOGO TEXT */
+.nav-logo p {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Sans Unicode";
+  font-size: 24px;
+  font-weight: 900;
+  color: #214e4a;
+  margin-left: 10px;
+  letter-spacing: 0.3px;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.nav-logo:hover .logo {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 8px rgba(138, 207, 193, 0.6));
+}
+
+.nav-logo:hover p {
+  color: #1f5f55;
+  text-shadow: 0 0 12px rgba(138, 207, 193, 0.6);
+}
+
