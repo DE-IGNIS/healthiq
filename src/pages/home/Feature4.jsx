@@ -37,7 +37,6 @@ function Feature4() {
       return;
     }
 
-    // console.log("Form submitted: ", formData);
     if (formData !== null) {
       setLoading(true);
     }
