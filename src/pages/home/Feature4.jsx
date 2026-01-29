@@ -171,7 +171,7 @@ function Feature4() {
             <Macros formData={formData} />
           </>
         ) : (
-          <p>Macros data could not be loaded</p>
+          <p>Click to generate Macros</p>
         )}
       </div>
     </div>

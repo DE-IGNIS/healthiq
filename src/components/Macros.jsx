@@ -87,7 +87,7 @@ function Macros({ formData }) {
         </div>
 
         <button className="download-btn" onClick={handleDownload}>
-          Get a meal planner (PDF)
+          Get Meal Planner (PDF)
         </button>
       </div>
 
