@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import "./styling/Macros.css";
-import DietPDF from "./DietPdf";
+import DietPDF from "./DietPDF";
 import { pdf, PDFDownloadLink } from "@react-pdf/renderer";
 import { saveAs } from "file-saver";
 
-const handleDownload = async () => {
-  try {
-    const blob = await pdf(<DietPDF />).toBlob();
-    saveAs(blob, "diet-plan.pdf");
-  } catch (err) {
-    console.error("PDF generation failed", err);
-    alert("Could not generate PDF");
-  }
-};
+// const handleDownload = async () => {
+//   try {
+//     const blob = await pdf(<DietPDF />).toBlob();
+//     saveAs(blob, "diet-plan.pdf");
+//   } catch (err) {
+//     console.error("PDF generation failed", err);
+//     alert("Could not generate PDF");
+//   }
+// };
 
 function Macros({ formData }) {
   const [promptResponses, setpromptResponses] = useState([]);
@@ -85,20 +85,18 @@ function Macros({ formData }) {
             <span className="macro-value">{fat_g.toFixed(2)} g</span>
           </div>
         </div>
-
-        <button className="download-btn" onClick={handleDownload}>
-          Get Meal Planner (PDF)
-        </button>
       </div>
 
-      {/* I can do this or the above would do  */}
-      {/* <PDFDownloadLink document={<DietPDF />} fileName="diet-plan.pdf">
-          {({ loading }) => (
-            <button disabled={loading}>
-              {loading ? "Generating pdf..." : "Download PDF"}
-            </button>
-          )}
-        </PDFDownloadLink> */}
+      <PDFDownloadLink
+        document={<DietPDF goal={formData.goal} dietType={formData.diet} />}
+        fileName="diet-plan.pdf"
+      >
+        {({ loading }) => (
+          <button className="downaload-btn" disabled={loading}>
+            {loading ? "Generating pdf..." : "Get Meal Planner (PDF)"}
+          </button>
+        )}
+      </PDFDownloadLink>
     </>
   );
 }

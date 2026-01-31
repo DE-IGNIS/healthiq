@@ -6,7 +6,7 @@ function Landing() {
   return (
     <div className="landing-wrapper">
 
-      {/* HERO SECTION */}
+      
       <section className="hero-section">
 
         <div className="hero-card">
@@ -31,7 +31,7 @@ function Landing() {
 
       </section>
 
-      {/* CONTENT SECTION */}
+      
       <section className="content-section">
 
         <div className="content-left">
