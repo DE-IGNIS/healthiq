@@ -1,13 +1,3 @@
-/* .macros-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem;
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e9ecef;
-} */
-
 h1 {
   font-size: 2.1rem;
   font-weight: 700;
@@ -18,17 +8,6 @@ h1 {
   position: relative;
 }
 
-/* h1::after {
-  content: '';
-  width: 80px;
-  height: 4px;
-  background: #4361ee;
-  display: block;
-  margin: 12px auto 0;
-  border-radius: 4px;
-} */
-
-/* Macro display cards */
 .macro-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -66,7 +45,6 @@ h1 {
   color: #4361ee;
 }
 
-/* Download button */
 .download-btn {
   display: block;
   width: 100%;
