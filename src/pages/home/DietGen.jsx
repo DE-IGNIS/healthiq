@@ -11,6 +11,10 @@ function Feature4() {
     activity: "",
     goal: "",
     diet: "",
+    calories: "",
+    protein: "",
+    carbs: "",
+    fats: "",
   });
   const [loading, setLoading] = useState(false);
 
@@ -154,7 +158,7 @@ function Feature4() {
             required
           >
             <option value="">Select</option>
-            <option value="non-veg">Non-Vegetarian Diet</option>
+            <option value="non_veg">Non-Vegetarian Diet</option>
             <option value="veg">Vegetarian Diet</option>
             <option value="vegan">Vegan Diet</option>
           </select>
@@ -171,7 +175,7 @@ function Feature4() {
             <Macros formData={formData} />
           </>
         ) : (
-          <p>Click to generate Macros</p>
+          <></>
         )}
       </div>
     </div>

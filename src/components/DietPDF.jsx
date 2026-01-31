@@ -546,15 +546,15 @@ const dietData = {
   },
 };
 
-
-function DietPDF({ goal = "gain", dietType = "veg" }) {
+function DietPDF({ goal, dietType, calories, protein, carbs, fats }) {
   const schedule = dietData[goal]?.[dietType] || [];
 
   return (
     <Document>
       <Page size="A4" style={styles.page}>
         <Text style={styles.title}>
-          7-Day {goal.toUpperCase()} Diet Plan ({dietType.replace("_", " ")})
+          7-Day {goal.toUpperCase()} Weight Diet Plan (
+          {dietType.replace("_", " ")})
         </Text>
 
         {schedule.map((dayPlan) => (
@@ -571,10 +571,8 @@ function DietPDF({ goal = "gain", dietType = "veg" }) {
             ))}
 
             <Text style={styles.totals}>
-              Calories: {dayPlan.daily_totals.calories} kcal | Protein:{" "}
-              {dayPlan.daily_totals.protein} g | Carbs:{" "}
-              {dayPlan.daily_totals.carbs} g | Fats: {dayPlan.daily_totals.fats}{" "}
-              g
+              Calories: {calories} kcal | Protein: {protein} g | Carbs: {carbs}{" "}
+              g | Fats: {fats} g
             </Text>
           </View>
         ))}
