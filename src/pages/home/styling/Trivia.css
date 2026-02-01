@@ -148,11 +148,12 @@ header {
   transition: 0.2s;
 }
 
-.nav-btn:disabled,
-.next.disabled {
+/* NEXT BUTTON DISPLAY FIX !! */
+/* .nav-btn:disabled, */
+/* .next.disabled {
   background: #bdc3c7;
   cursor: not-allowed;
-}
+} */
 
 .next {
   background: #27ae60;

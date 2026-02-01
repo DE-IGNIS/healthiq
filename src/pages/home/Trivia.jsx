@@ -422,7 +422,7 @@ export default function HealthTrivia() {
             </button>
             <button
               onClick={handleNext}
-              disabled={!answered && currentIndex < quizQuestions.length - 1}
+              disabled={!answered && currentIndex == quizQuestions.length - 1}
               className={`nav-btn next ${!answered ? "disabled" : ""}`}
             >
               {currentIndex === quizQuestions.length - 1 ? "Finish" : "Next ➡"}
