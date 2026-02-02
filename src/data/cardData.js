@@ -1,3 +1,4 @@
+import { ca } from "zod/v4/locales";
 import { card_images } from "../constants/images";
 
 export const cardsData = [
@@ -136,7 +137,7 @@ export const cardsData = [
     id: 9,
     title: "Anemia",
     tag: "Chronic",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.anemia,
     shortDescription:
       "A condition caused by low levels of healthy red blood cells.",
     overview:
@@ -153,7 +154,7 @@ export const cardsData = [
     id: 10,
     title: "Diarrheal Diseases",
     tag: "Bacterial",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.diarrheal,
     shortDescription: "Diseases causing frequent loose or watery stools.",
     overview:
       "Diarrheal diseases refer to infections of the digestive system that cause frequent passage of loose or watery stools. They are a major cause of illness, especially among children in developing regions.",
@@ -170,7 +171,7 @@ export const cardsData = [
     id: 11,
     title: "Hepatitis",
     tag: "Viral",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.hepatitis,
     shortDescription: "Inflammation of the liver caused by viral infection.",
     overview:
       "Hepatitis is a disease characterized by inflammation of the liver and is commonly caused by hepatitis viruses A, B, and C. These viruses affect liver function and can range from mild illness to severe, long-term liver damage.",
@@ -186,7 +187,7 @@ export const cardsData = [
     id: 12,
     title: "Common Cold",
     tag: "Viral",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.cold,
     shortDescription: "A mild viral infection of the upper respiratory tract.",
     overview:
       "The common cold is a viral infection affecting the nose, throat, and upper respiratory tract. It is one of the most common illnesses and usually resolves on its own within a few days.",
@@ -202,7 +203,7 @@ export const cardsData = [
     id: 13,
     title: "Influenza",
     tag: "Viral",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.influenza,
     shortDescription:
       "A contagious viral infection affecting the respiratory system.",
     overview:
@@ -219,7 +220,7 @@ export const cardsData = [
     id: 14,
     title: "COVID-19",
     tag: "Viral",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.covid19,
     shortDescription: "A viral respiratory disease caused by the coronavirus.",
     overview:
       "COVID-19 is an infectious disease caused by the SARS-CoV-2 virus. It mainly affects the respiratory system and can range from mild illness to severe disease and death.",
@@ -235,7 +236,7 @@ export const cardsData = [
     id: 15,
     title: "Pneumonia",
     tag: "Bacterial",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.pneumonia,
     shortDescription: "A lung infection causing inflammation of air sacs.",
     overview:
       "Pneumonia is an infection that inflames the air sacs in one or both lungs, which may fill with fluid or pus. It can be caused by bacteria, viruses, or fungi and affects breathing.",
@@ -251,7 +252,7 @@ export const cardsData = [
     id: 16,
     title: "Skin Infections",
     tag: "Bacterial",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.skin,
     shortDescription: "Infections affecting the skin caused by microbes.",
     overview:
       "Skin infections are conditions in which bacteria, viruses, fungi, or parasites invade the skin, leading to redness, swelling, pain, or discharge. They can range from mild to severe.",
@@ -268,7 +269,7 @@ export const cardsData = [
     id: 17,
     title: "Urinary Tract Infection",
     tag: "Bacterial",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.urine,
     shortDescription: "An infection affecting the urinary system.",
     overview:
       "Urinary tract infection is a condition in which bacteria infect any part of the urinary system, including the kidneys, bladder, ureters, or urethra. It is more common in women and can cause discomfort and pain.",
@@ -284,7 +285,7 @@ export const cardsData = [
     id: 18,
     title: "Malnutrition",
     tag: "Chronic",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.malnutrition,
     shortDescription:
       "A condition caused by inadequate or imbalanced nutrition.",
     overview:
@@ -301,7 +302,7 @@ export const cardsData = [
     id: 19,
     title: "Obesity",
     tag: "Chronic",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.obesity,
     shortDescription: "A condition characterized by excessive body fat.",
     overview:
       "Obesity is a medical condition in which excess body fat accumulates to an extent that it negatively affects health. It increases the risk of many chronic diseases and reduces overall quality of life.",
@@ -317,7 +318,7 @@ export const cardsData = [
     id: 20,
     title: "Mental Health Disorders",
     tag: "Mental",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.mental,
     shortDescription:
       "Conditions affecting emotional and psychological well-being.",
     overview:
@@ -334,7 +335,7 @@ export const cardsData = [
     id: 21,
     title: "Arthritis",
     tag: "Chronic",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.arthritis,
     shortDescription:
       "A condition causing inflammation and pain in the joints.",
     overview:
@@ -351,7 +352,7 @@ export const cardsData = [
     id: 22,
     title: "Migraine",
     tag: "Chronic",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.migraine,
     shortDescription: "A neurological condition causing severe headaches.",
     overview:
       "Migraine is a neurological disorder characterized by recurring episodes of severe headache, often on one side of the head. It may be accompanied by nausea, vomiting, and sensitivity to light and sound.",
@@ -367,7 +368,7 @@ export const cardsData = [
     id: 23,
     title: "Gastritis",
     tag: "Bacterial",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.gastritis,
     shortDescription: "Inflammation of the stomach lining.",
     overview:
       "Gastritis is a condition in which the lining of the stomach becomes inflamed, leading to discomfort and digestive problems. It can be acute or chronic in nature.",
@@ -383,7 +384,7 @@ export const cardsData = [
     id: 24,
     title: "Sinusitis",
     tag: "Bacterial",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.sinusitis,
     shortDescription: "Inflammation of the sinus cavities.",
     overview:
       "Sinusitis is a condition in which the sinus cavities become inflamed or swollen, usually due to infection or allergy. This inflammation blocks normal mucus drainage and causes pressure in the face.",
@@ -400,7 +401,7 @@ export const cardsData = [
     id: 25,
     title: "Conjunctivitis",
     tag: "Bacterial",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.conjunctivitis,
     shortDescription: "An infection or inflammation of the eye membrane.",
     overview:
       "Conjunctivitis is an inflammation or infection of the conjunctiva, the transparent membrane that covers the white part of the eye and inner eyelids. It causes redness and irritation of the eyes.",
@@ -416,7 +417,7 @@ export const cardsData = [
     id: 26,
     title: "Leprosy",
     tag: "Chronic",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.leprosy,
     shortDescription: "A chronic infectious disease affecting skin and nerves.",
     overview:
       "Leprosy is a chronic infectious disease caused by the bacterium Mycobacterium leprae. It mainly affects the skin, peripheral nerves, and mucous membranes of the upper respiratory tract.",
@@ -432,7 +433,7 @@ export const cardsData = [
     id: 27,
     title: "Measles",
     tag: "Viral",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.measles,
     shortDescription: "A highly contagious viral disease.",
     overview:
       "Measles is a highly contagious viral disease caused by the measles virus. It primarily affects children and spreads rapidly in unvaccinated populations.",
@@ -448,7 +449,7 @@ export const cardsData = [
     id: 28,
     title: "Cholera",
     tag: "Bacterial",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.cholera,
     shortDescription:
       "A water-borne bacterial disease causing severe diarrhea.",
     overview:
@@ -465,7 +466,7 @@ export const cardsData = [
     id: 29,
     title: "Goiter",
     tag: "Chronic",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.goiter,
     shortDescription: "Abnormal enlargement of the thyroid gland.",
     overview:
       "Goiter is a condition characterized by the enlargement of the thyroid gland, which is located in the neck. The thyroid gland plays an important role in regulating metabolism through hormone production.",
@@ -481,7 +482,7 @@ export const cardsData = [
     id: 30,
     title: "Rabies",
     tag: "Viral",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.rabies,
     shortDescription:
       "A deadly viral disease transmitted through animal bites.",
     overview:
@@ -498,7 +499,7 @@ export const cardsData = [
     id: 31,
     title: "Polio",
     tag: "Viral",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.polio,
     shortDescription: "A viral disease that can cause paralysis.",
     overview:
       "Polio is a highly infectious viral disease caused by the poliovirus. It mainly affects children under five years of age and can lead to permanent paralysis.",
@@ -514,7 +515,7 @@ export const cardsData = [
     id: 32,
     title: "Chicken Pox",
     tag: "Viral",
-    image: "assets/images/cards/placeholder.jpg",
+    image: card_images.chickenpox,
     shortDescription: "A contagious viral disease causing itchy skin rash.",
     overview:
       "Chicken pox is a highly contagious viral disease caused by the varicella-zoster virus. It is common in children and is characterized by an itchy skin rash with red spots and blisters.",
