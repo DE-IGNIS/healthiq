@@ -5,7 +5,7 @@ import Content from "./pages/Content";
 import About from "./pages/About";
 import Landing from "./pages/Landing";
 import Join from "./pages/Join";
-import { DietGen, Chat, Feature2, Trivia } from "./pages/home";
+import { DietGen, Chat, HeatMap, Trivia , Feature5 , Feature6 } from "./pages/home";
 import Layout from "./layouts/Layout";
 
 function App() {
@@ -23,13 +23,19 @@ function App() {
           <Route path="/home/chat" element={<Chat />} />
 
           {/* Home - feature 2 Page route  */}
-          <Route path="/home/feature2" element={<Feature2 />} />
+          <Route path="/home/heatmap" element={<HeatMap />} />
 
           {/* Home - feature 3 Page route  */}
           <Route path="/home/trivia" element={<Trivia />} />
 
           {/* Home - feature 4 Page route  */}
           <Route path="/home/dietgen" element={<DietGen />} />
+         
+          {/* Home - feature 5 Page route  */}
+          <Route path="/home/feature5" element={<Feature5 />} />
+         
+          {/* Home - feature 6 Page route  */}
+          <Route path="/home/feature6" element={<Feature6 />} />
 
           {/* Content Page route  */}
           <Route path="/content" element={<Content />} />

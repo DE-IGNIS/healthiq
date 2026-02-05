@@ -30,7 +30,7 @@ function normalizeDateKey(dateStr) {
   }
 }
 
-export default function DiseaseOutbreaksMap() {
+function HeatMap() {
   const [outbreaks, setOutbreaks] = useState([]);
   const [explanations, setExplanations] = useState({});
   const [tips, setTips] = useState({});
@@ -48,7 +48,9 @@ export default function DiseaseOutbreaksMap() {
         setError(null);
         const [outbreaksRes, expRes, tipsRes] = await Promise.all([
           fetch("/data/map_outbreaks.json", { signal: controller.signal }),
-          fetch("/data/city_date_explanations.json", { signal: controller.signal }),
+          fetch("/data/city_date_explanations.json", {
+            signal: controller.signal,
+          }),
           fetch("/data/health_tips.json", { signal: controller.signal }),
         ]);
         if (!outbreaksRes.ok || !expRes.ok || !tipsRes.ok) {
@@ -79,7 +81,8 @@ export default function DiseaseOutbreaksMap() {
   }, [selectedOutbreak]);
 
   const selectedExplanation = selectedKey ? explanations[selectedKey] : null;
-  const topSuspectedDisease = selectedExplanation?.top_diseases?.[0]?.[0] ?? null;
+  const topSuspectedDisease =
+    selectedExplanation?.top_diseases?.[0]?.[0] ?? null;
   const healthTip = topSuspectedDisease ? tips[topSuspectedDisease] : null;
 
   // Map fly-to on selection
@@ -90,15 +93,26 @@ export default function DiseaseOutbreaksMap() {
         map.flyTo(
           [Number(selectedOutbreak.lat), Number(selectedOutbreak.lon)],
           10,
-          { duration: 1.2 }
+          { duration: 1.2 },
         );
       }
     }, [selectedOutbreak, map]);
     return null;
   };
 
-  if (loading) return <div className="outbreaks-loading"><h3>Loading outbreak insights...</h3></div>;
-  if (error) return <div className="outbreaks-error"><h3>Error: {error}</h3><p>Check data files or network.</p></div>;
+  if (loading)
+    return (
+      <div className="outbreaks-loading">
+        <h3>Loading outbreak insights...</h3>
+      </div>
+    );
+  if (error)
+    return (
+      <div className="outbreaks-error">
+        <h3>Error: {error}</h3>
+        <p>Check data files or network.</p>
+      </div>
+    );
 
   return (
     <div className={`outbreaks-layout ${isDarkMode ? "dark-mode" : ""}`}>
@@ -137,7 +151,13 @@ export default function DiseaseOutbreaksMap() {
               <CircleMarker
                 key={idx}
                 center={[Number(record.lat), Number(record.lon)]}
-                radius={record.intensity === "red" ? 14 : record.intensity === "orange" ? 11 : 8}
+                radius={
+                  record.intensity === "red"
+                    ? 14
+                    : record.intensity === "orange"
+                      ? 11
+                      : 8
+                }
                 pathOptions={{
                   color: colorFromIntensity(record.intensity),
                   fillColor: colorFromIntensity(record.intensity),
@@ -149,9 +169,14 @@ export default function DiseaseOutbreaksMap() {
               >
                 <Popup className="outbreak-popup">
                   <div className="popup-inner">
-                    <h3>{record.city}, {record.state}</h3>
+                    <h3>
+                      {record.city}, {record.state}
+                    </h3>
                     <p className="popup-date">Date: {record.date}</p>
-                    <p>Z-score: <strong>{Number(record.z_score).toFixed(2)}</strong></p>
+                    <p>
+                      Z-score:{" "}
+                      <strong>{Number(record.z_score).toFixed(2)}</strong>
+                    </p>
                   </div>
                 </Popup>
               </CircleMarker>
@@ -164,21 +189,36 @@ export default function DiseaseOutbreaksMap() {
           {!selectedOutbreak ? (
             <div className="sidebar-welcome">
               <h2>Welcome</h2>
-              <p>Click any outbreak marker on the map to explore details, explanations, and health recommendations.</p>
+              <p>
+                Click any outbreak marker on the map to explore details,
+                explanations, and health recommendations.
+              </p>
               <div className="legend">
                 <h4>Outbreak Intensity</h4>
-                <div className="legend-item"><span className="dot red"></span> High concern (Red)</div>
-                <div className="legend-item"><span className="dot orange"></span> Elevated (Orange)</div>
-                <div className="legend-item"><span className="dot yellow"></span> Moderate (Yellow)</div>
-                <div className="legend-item"><span className="dot green"></span> Low (Green)</div>
+                <div className="legend-item">
+                  <span className="dot red"></span> High concern (Red)
+                </div>
+                <div className="legend-item">
+                  <span className="dot orange"></span> Elevated (Orange)
+                </div>
+                <div className="legend-item">
+                  <span className="dot yellow"></span> Moderate (Yellow)
+                </div>
+                <div className="legend-item">
+                  <span className="dot green"></span> Low (Green)
+                </div>
               </div>
             </div>
           ) : (
             <div className="outbreak-detail">
-              <h2>{selectedOutbreak.city}, {selectedOutbreak.state}</h2>
+              <h2>
+                {selectedOutbreak.city}, {selectedOutbreak.state}
+              </h2>
               <p className="detail-meta">
                 <span>Date: {selectedOutbreak.date}</span>
-                <span>Z-score: {Number(selectedOutbreak.z_score).toFixed(2)}</span>
+                <span>
+                  Z-score: {Number(selectedOutbreak.z_score).toFixed(2)}
+                </span>
               </p>
 
               {selectedExplanation ? (
@@ -188,18 +228,26 @@ export default function DiseaseOutbreaksMap() {
                   <details open>
                     <summary>Top Symptoms</summary>
                     <ul className="symptom-list">
-                      {selectedExplanation.top_symptoms?.map(([sym, score], i) => (
-                        <li key={i}>{sym} <span>{score.toFixed(2)}</span></li>
-                      )) || <li>No data</li>}
+                      {selectedExplanation.top_symptoms?.map(
+                        ([sym, score], i) => (
+                          <li key={i}>
+                            {sym} <span>{score.toFixed(2)}</span>
+                          </li>
+                        ),
+                      ) || <li>No data</li>}
                     </ul>
                   </details>
 
                   <details open>
                     <summary>Likely Diseases</summary>
                     <ul className="disease-list">
-                      {selectedExplanation.top_diseases?.map(([dis, score], i) => (
-                        <li key={i}>{dis} <span>{score.toFixed(2)}</span></li>
-                      )) || <li>No ranking</li>}
+                      {selectedExplanation.top_diseases?.map(
+                        ([dis, score], i) => (
+                          <li key={i}>
+                            {dis} <span>{score.toFixed(2)}</span>
+                          </li>
+                        ),
+                      ) || <li>No ranking</li>}
                     </ul>
                   </details>
 
@@ -215,31 +263,50 @@ export default function DiseaseOutbreaksMap() {
                   )}
                 </div>
               ) : (
-                <p className="no-data">No detailed analysis available for this location/date.</p>
+                <p className="no-data">
+                  No detailed analysis available for this location/date.
+                </p>
               )}
 
               <hr className="divider" />
 
               <div className="health-advice">
-                <h3>Health Guidance {topSuspectedDisease ? ` — ${topSuspectedDisease}` : ""}</h3>
+                <h3>
+                  Health Guidance{" "}
+                  {topSuspectedDisease ? ` — ${topSuspectedDisease}` : ""}
+                </h3>
                 {healthTip ? (
                   <>
                     <h4>{healthTip.title}</h4>
                     <div className="advice dos">
                       <strong>Do’s</strong>
-                      <ul>{healthTip.dos?.map((item, i) => <li key={i}>{item}</li>)}</ul>
+                      <ul>
+                        {healthTip.dos?.map((item, i) => (
+                          <li key={i}>{item}</li>
+                        ))}
+                      </ul>
                     </div>
                     <div className="advice donts">
                       <strong>Don’ts</strong>
-                      <ul>{healthTip.donts?.map((item, i) => <li key={i}>{item}</li>)}</ul>
+                      <ul>
+                        {healthTip.donts?.map((item, i) => (
+                          <li key={i}>{item}</li>
+                        ))}
+                      </ul>
                     </div>
                     <div className="advice seek">
                       <strong>Seek help if</strong>
-                      <ul>{healthTip.seek_help?.map((item, i) => <li key={i}>{item}</li>)}</ul>
+                      <ul>
+                        {healthTip.seek_help?.map((item, i) => (
+                          <li key={i}>{item}</li>
+                        ))}
+                      </ul>
                     </div>
                   </>
                 ) : (
-                  <p className="no-data">No tailored advice for the primary suspected condition.</p>
+                  <p className="no-data">
+                    No tailored advice for the primary suspected condition.
+                  </p>
                 )}
               </div>
             </div>
@@ -249,3 +316,5 @@ export default function DiseaseOutbreaksMap() {
     </div>
   );
 }
+
+export default HeatMap;
