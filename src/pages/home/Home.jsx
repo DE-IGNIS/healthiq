@@ -15,7 +15,7 @@ function Home() {
           </h1>
 
           <p>
-            DietIQ helps communities access reliable health and nutrition
+            HealthIQ helps communities access reliable health and nutrition
             guidance through intelligent, multilingual technology.
           </p>
         </div>
@@ -65,12 +65,12 @@ function Home() {
             </Link>
           </div>
           
-          <div className="card">
+          {/* <div className="card">
             <Link className="feature-link" to="feature6">
               <h2>Feature6</h2>
               <p>Feature6 ke bare me.</p>
             </Link>
-          </div>
+          </div> */}
         </div>
       </section>
     </div>

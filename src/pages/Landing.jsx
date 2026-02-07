@@ -11,8 +11,8 @@ function Landing() {
 
         <div className="hero-card">
           <div className="hero-card-header">
-            <img src={logo} alt="DietIQ" />
-            <h3>DietIQ</h3>
+            <img src={logo} alt="HealthIQ" />
+            <h3>HealthIQ</h3>
           </div>
 
           <h2>Health Care by Community & AI</h2>
@@ -44,7 +44,7 @@ function Landing() {
             preventable health issues, poor nutrition, and sanitation-related
             risks continue to impact community well-being.
             <br /><br />
-            DietIQ addresses this gap by combining artificial intelligence,
+            HealthIQ addresses this gap by combining artificial intelligence,
             community knowledge, and multilingual accessibility.
           </p>
         </div>

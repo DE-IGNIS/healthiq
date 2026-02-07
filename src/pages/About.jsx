@@ -4,7 +4,7 @@ function About() {
   return (
     <div className="about-wrapper">
       <section className="about-hero">
-        <h1>About DietIQ</h1>
+        <h1>About HealthIQ</h1>
         <p>
           Making community health accessible through AI, trust, and inclusive
           technology.
@@ -38,10 +38,10 @@ function About() {
       </section>
 
       <section className="about-section light">
-        <h2>Why DietIQ</h2>
+        <h2>Why HealthIQ</h2>
         <p className="about-text">
           Access to health information should not depend on geography, language,
-          or digital literacy. DietIQ was created to bridge this gap by
+          or digital literacy. HealthIQ was created to bridge this gap by
           combining artificial intelligence with community-driven insights —
           making health guidance more relevant, inclusive, and trustworthy.
         </p>
@@ -82,15 +82,15 @@ function About() {
         <p className="about-text">
           For further assistance or inquiries, feel free to reach out to us at
           <br />
-          <a href="mailto:support@dietiq.ai" className="about-mail">
-            support@dietiq.ai
+          <a href="mailto:support@HealthIQ.ai" className="about-mail">
+            support@HealthIQ.ai
           </a>
         </p>
 
         <div className="contact-options">
           <div className="contact-box">
             <h3>Email</h3>
-            <p>support@dietiq.ai</p>
+            <p>support@HealthIQ.ai</p>
           </div>
 
           <div className="contact-box">
