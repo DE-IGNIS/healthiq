@@ -201,7 +201,8 @@ export default function Feature5() {
     try {
       setLoading(true);
 
-      const GEMINI_API_KEY = "AIzaSyAGuPM9tGEtNv-fCJ9gDvY97jVP7B2QVuk"; // ← never commit this!
+      // const GEMINI_API_KEY = "AIzaSyAGuPM9tGEtNv-fCJ9gDvY97jVP7B2QVuk"; // ← never commit this! leaked
+      const GEMINI_API_KEY = "AIzaSyC3QxMFtWO6pCQtK5pswCldS0TLwWm7jlQ"; // ← never commit this!
 
       const res = await fetch(
         `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,

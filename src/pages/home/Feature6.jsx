@@ -1,9 +1,9 @@
-function Feature6() {
-  return (
-    <>
-      <h1>Hello feature 6</h1>
-    </>
-  );
-}
+// function Feature6() {
+//   return (
+//     <>
+//       <h1>Hello feature 6</h1>
+//     </>
+//   );
+// }
 
-export default Feature6;
+// // export default Feature6;
