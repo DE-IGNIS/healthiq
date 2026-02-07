@@ -1,5 +1,16 @@
 import { useState, useEffect } from "react";
-import "./styling/Chat.css"; // renamed file
+import { Client, Databases, ID, Query, Permission, Role } from "appwrite";
+import "./styling/Chat.css";
+
+// Appwrite setup (move to a separate file later if you want)
+const client = new Client()
+  .setEndpoint("https://cloud.appwrite.io/v1")
+  .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID);
+
+const databases = new Databases(client);
+
+const DATABASE_ID = import.meta.env.VITE_APPWRITE_DATABASE_ID;
+const COLLECTION_ID = import.meta.env.VITE_APPWRITE_COLLECTION_ID;
 
 function Chat() {
   const [allComments, setAllComments] = useState([]);
@@ -11,112 +22,196 @@ function Chat() {
     category: "medicine",
     message: "",
   });
+  const [loading, setLoading] = useState(true);
 
+  // Load comments from Appwrite on mount
+  // useEffect(() => {
+  //   loadComments();
+
+  //   // Optional: real-time updates (new comments appear instantly)
+  //   const unsubscribe = client.subscribe(
+  //     `databases.${DATABASE_ID}.collections.${COLLECTION_ID}.documents`,
+  //     (response) => {
+  //       if (response.events.includes("databases.*.collections.*.documents.*.create")) {
+  //         loadComments(); // refresh list when new comment is added
+  //       }
+  //     }
+  //   );
+
+  //   return () => unsubscribe(); // cleanup
+  // }, []);
   useEffect(() => {
     loadComments();
+
+    const unsubscribe = client.subscribe(
+      `databases.${DATABASE_ID}.collections.${COLLECTION_ID}.documents`,
+      (response) => {
+        // Only handle NEW comments
+        if (
+          response.events.includes(
+            "databases.*.collections.*.documents.*.create",
+          )
+        ) {
+          const doc = response.payload;
+
+          const newComment = {
+            id: doc.$id,
+            username: doc.username,
+            message: doc.message,
+            category: doc.category,
+            location: doc.location || "Unknown",
+            upvotes: doc.upvotes || 0,
+            downvotes: doc.downvotes || 0,
+            isExpertVerified: doc.isExpertVerified || false,
+            createdAt: doc.createdAt,
+          };
+
+          // Avoid duplicates (important!)
+          setAllComments((prev) => {
+            if (prev.some((c) => c.id === newComment.id)) return prev;
+            return [newComment, ...prev];
+          });
+        }
+      },
+    );
+
+    return () => unsubscribe();
   }, []);
 
   const loadComments = async () => {
     try {
-      // Load original comments from public/data/comments.json
-      const response = await fetch("/data/comments.json");
-      if (!response.ok) throw new Error("Failed to load comments");
-      const data = await response.json();
+      setLoading(true);
+      const response = await databases.listDocuments(
+        DATABASE_ID,
+        COLLECTION_ID,
+        [
+          Query.orderDesc("createdAt"), // newest first
+        ],
+      );
 
-      // Load user-added comments & vote modifications from localStorage
-      const stored = localStorage.getItem("healthChat_comments");
-      let userComments = stored ? JSON.parse(stored) : [];
+      const comments = response.documents.map((doc) => ({
+        id: doc.$id,
+        username: doc.username,
+        message: doc.message,
+        category: doc.category,
+        location: doc.location || "Unknown",
+        upvotes: doc.upvotes || 0,
+        downvotes: doc.downvotes || 0,
+        isExpertVerified: doc.isExpertVerified || false,
+        createdAt: doc.createdAt,
+      }));
 
-      // Merge: original + user-added comments
-      const merged = [...data.comments, ...userComments];
-
-      // Apply any vote changes from localStorage
-      const storedVotes = localStorage.getItem("healthChat_votes");
-      const voteMap = storedVotes ? JSON.parse(storedVotes) : {};
-
-      const commentsWithVotes = merged.map((c) => {
-        const key = c.id;
-        if (voteMap[key]) {
-          return { ...c, upvotes: voteMap[key].up, downvotes: voteMap[key].down };
-        }
-        return c;
-      });
-
-      setAllComments(commentsWithVotes);
+      setAllComments(comments);
     } catch (err) {
-      console.error("Error loading comments:", err);
+      console.error("Error loading comments from Appwrite:", err);
       setAllComments([]);
+    } finally {
+      setLoading(false);
     }
   };
 
-  const saveUserComment = (newComment) => {
-    const stored = localStorage.getItem("healthChat_comments");
-    const existing = stored ? JSON.parse(stored) : [];
-    const updated = [...existing, newComment];
-    localStorage.setItem("healthChat_comments", JSON.stringify(updated));
+  const handleVote = async (commentId, voteType) => {
+    try {
+      // Get current comment
+      const comment = await databases.getDocument(
+        DATABASE_ID,
+        COLLECTION_ID,
+        commentId,
+      );
+
+      let updatedUp = comment.upvotes || 0;
+      let updatedDown = comment.downvotes || 0;
+
+      if (voteType === "up") updatedUp += 1;
+      if (voteType === "down") updatedDown += 1;
+
+      await databases.updateDocument(DATABASE_ID, COLLECTION_ID, commentId, {
+        upvotes: updatedUp,
+        downvotes: updatedDown,
+      });
+
+      // Optimistic UI update
+      setAllComments((prev) =>
+        prev.map((c) =>
+          c.id === commentId
+            ? { ...c, upvotes: updatedUp, downvotes: updatedDown }
+            : c,
+        ),
+      );
+    } catch (err) {
+      console.error("Vote failed:", err);
+    }
   };
 
-  const saveVote = (commentId, up, down) => {
-    const stored = localStorage.getItem("healthChat_votes");
-    const votes = stored ? JSON.parse(stored) : {};
-    votes[commentId] = { up, down };
-    localStorage.setItem("healthChat_votes", JSON.stringify(votes));
-  };
-
-  // Split comments
-  const verifiedComments = allComments.filter((c) => c.isExpertVerified === true);
-  const unverifiedComments = allComments.filter((c) => c.isExpertVerified !== true);
-
-  const getFiltered = (list) => {
-    if (currentFilter === "all") return list;
-    return list.filter((c) => c.category.toLowerCase() === currentFilter.toLowerCase());
-  };
-
-  const displayedComments =
-    currentTab === "verified" ? getFiltered(verifiedComments) : getFiltered(unverifiedComments);
-
-  const handleVote = (commentId, voteType) => {
-    setAllComments((prev) =>
-      prev.map((c) => {
-        if (c.id !== commentId) return c;
-        let { upvotes = 0, downvotes = 0 } = c;
-        if (voteType === "up") upvotes += 1;
-        if (voteType === "down") downvotes += 1;
-        saveVote(commentId, upvotes, downvotes);
-        return { ...c, upvotes, downvotes };
-      })
-    );
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
     const newComment = {
-      id: Date.now().toString(),
       username: formData.username.trim() || "Anonymous",
       message: formData.message.trim(),
       category: formData.category,
       location: "Unknown",
       upvotes: 0,
       downvotes: 0,
-      isExpertVerified: false,
+      isExpertVerified: false, // new comments are unverified by default
       createdAt: new Date().toISOString(),
     };
 
-    // Add to local state
-    setAllComments((prev) => [...prev, newComment]);
+    try {
+      await databases.createDocument(
+        DATABASE_ID,
+        COLLECTION_ID,
+        ID.unique(),
+        newComment,
+        [
+          Permission.read(Role.any()), // anyone can read
+          Permission.write(Role.any()), // anyone can vote/comment (adjust later)
+        ],
+      );
 
-    // Save to localStorage
-    saveUserComment(newComment);
+      // Optimistic UI + close modal
+      // setAllComments((prev) => [
+      //   { ...newComment, id: "temp-" + Date.now() },
+      //   ...prev,
+      // ]);
+      // setFormData({ username: "", category: "medicine", message: "" });
+      // setModalOpen(false);
 
-    // Reset form
-    setFormData({ username: "", category: "medicine", message: "" });
-    setModalOpen(false);
+      // // Real fetch will replace the temp one
+      // setTimeout(loadComments, 500);
+      setFormData({ username: "", category: "medicine", message: "" });
+      setModalOpen(false);
+      // Real-time subscription will add the comment automatically
+    } catch (err) {
+      console.error("Failed to post comment:", err);
+      alert("Could not post comment. Try again.");
+    }
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
+  // Split & filter logic (same as before)
+  const verifiedComments = allComments.filter(
+    (c) => c.isExpertVerified === true,
+  );
+  const unverifiedComments = allComments.filter(
+    (c) => c.isExpertVerified !== true,
+  );
+
+  const getFiltered = (list) => {
+    if (currentFilter === "all") return list;
+    return list.filter(
+      (c) => c.category.toLowerCase() === currentFilter.toLowerCase(),
+    );
+  };
+
+  const displayedComments =
+    currentTab === "verified"
+      ? getFiltered(verifiedComments)
+      : getFiltered(unverifiedComments);
 
   const formatCategory = (cat) =>
     cat.replace(/-/g, " ").replace(/\b\w/g, (ch) => ch.toUpperCase());
@@ -147,7 +242,9 @@ function Chat() {
         <div className="chat-comment-header">
           <strong className="chat-username">{comment.username}</strong>
           {comment.isExpertVerified && (
-            <span className="chat-badge chat-badge-expert">Expert Verified</span>
+            <span className="chat-badge chat-badge-expert">
+              Expert Verified
+            </span>
           )}
           <span className="chat-badge chat-badge-category">
             {formatCategory(comment.category)}
@@ -155,7 +252,7 @@ function Chat() {
         </div>
         <p className="chat-comment-text">{comment.message}</p>
         <small className="chat-timestamp">
-          {comment.createdAt ? new Date(comment.createdAt).toLocaleString() : "No date"}
+          {new Date(comment.createdAt).toLocaleString()}
         </small>
       </div>
     </div>
@@ -182,46 +279,68 @@ function Chat() {
         </div>
 
         <div className="chat-filter-bar">
-          {["all", "medicine", "fitness", "mental-health", "nutrition"].map((f) => (
-            <button
-              key={f}
-              className={`chat-filter-chip ${currentFilter === f ? "active" : ""}`}
-              onClick={() => setCurrentFilter(f)}
+          {["all", "medicine", "fitness", "mental-health", "nutrition"].map(
+            (f) => (
+              <button
+                key={f}
+                className={`chat-filter-chip ${currentFilter === f ? "active" : ""}`}
+                onClick={() => setCurrentFilter(f)}
+              >
+                {f === "all" ? "All" : formatCategory(f)}
+              </button>
+            ),
+          )}
+        </div>
+
+        {loading ? (
+          <p className="chat-empty-text">Loading comments...</p>
+        ) : (
+          <>
+            <div
+              className={`chat-section ${currentTab === "verified" ? "active" : ""}`}
             >
-              {f === "all" ? "All" : formatCategory(f)}
-            </button>
-          ))}
-        </div>
+              <div className="chat-comments-container">
+                {displayedComments.length === 0 ? (
+                  <p className="chat-empty-text">No verified comments yet.</p>
+                ) : (
+                  displayedComments.map((c) => (
+                    <CommentCard key={c.id} comment={c} />
+                  ))
+                )}
+              </div>
+            </div>
 
-        <div className={`chat-section ${currentTab === "verified" ? "active" : ""}`}>
-          <div className="chat-comments-container">
-            {displayedComments.length === 0 ? (
-              <p className="chat-empty-text">No verified comments yet.</p>
-            ) : (
-              displayedComments.map((c) => <CommentCard key={c.id} comment={c} />)
-            )}
-          </div>
-        </div>
+            <div
+              className={`chat-section ${currentTab === "unverified" ? "active" : ""}`}
+            >
+              <div className="chat-comments-container">
+                {displayedComments.length === 0 ? (
+                  <p className="chat-empty-text">No community comments yet.</p>
+                ) : (
+                  displayedComments.map((c) => (
+                    <CommentCard key={c.id} comment={c} />
+                  ))
+                )}
+              </div>
 
-        <div className={`chat-section ${currentTab === "unverified" ? "active" : ""}`}>
-          <div className="chat-comments-container">
-            {displayedComments.length === 0 ? (
-              <p className="chat-empty-text">No community comments yet.</p>
-            ) : (
-              displayedComments.map((c) => <CommentCard key={c.id} comment={c} />)
-            )}
-          </div>
-
-          <button className="chat-add-button" onClick={() => setModalOpen(true)}>
-            +
-          </button>
-        </div>
+              <button
+                className="chat-add-button"
+                onClick={() => setModalOpen(true)}
+              >
+                +
+              </button>
+            </div>
+          </>
+        )}
       </div>
 
       {modalOpen && (
         <div className="chat-modal-overlay">
           <div className="chat-modal">
-            <button className="chat-modal-close" onClick={() => setModalOpen(false)}>
+            <button
+              className="chat-modal-close"
+              onClick={() => setModalOpen(false)}
+            >
               ×
             </button>
             <h2 className="chat-modal-title">Share Your Opinion</h2>

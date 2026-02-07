@@ -1,141 +1,214 @@
-:root {
-  --bg: #f8fafc;
-  --text: #0f172a;
-  --sidebar-bg: #ffffff;
-  --border: #e2e8f0;
-  --accent: #3b82f6;
-}
+/* ---------------- EMPTY STATE ---------------- */
 
-.dark-mode {
-  --bg: #0f172a;
-  --text: #e2e8f0;
-  --sidebar-bg: #1e293b;
-  --border: #334155;
-  --accent: #60a5fa;
-}
-
-.outbreaks-layout {
+.empty-panel {
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  height: 100vh;
-  background: var(--bg);
-  color: var(--text);
-  font-family: system-ui, -apple-system, sans-serif;
-}
-
-.outbreaks-header {
-  padding: 1rem 1.5rem;
-  background: var(--sidebar-bg);
-  border-bottom: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  justify-content: center;
 }
 
-.outbreaks-header h1 {
-  margin: 0;
+.empty-card {
+  max-width: 380px;
+  padding: 32px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #f0fdfa, #ecfeff);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.empty-card h2 {
+  margin-top: 16px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #0f766e;
+}
+
+.empty-card p {
+  margin-top: 10px;
+  color: #334155;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.empty-card .hint {
+  margin-top: 16px;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+/* Pulse animation (top dot) */
+.pulse-dot {
+  width: 14px;
+  height: 14px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: #14b8a6;
+  animation: pulse 1.6s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(20, 184, 166, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(20, 184, 166, 0);
+  }
+}
+
+/* ---------------- SELECTED DETAIL CARD ---------------- */
+
+.detail-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.detail-card h2 {
   font-size: 1.5rem;
   font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 6px;
 }
 
-.theme-toggle {
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
-  border: 1px solid var(--border);
-  background: var(--bg);
+/* Meta info (date + z-score) */
+.meta {
+  font-size: 0.9rem;
+  color: #475569;
+  margin-bottom: 16px;
+}
+
+/* Section headings */
+.section-title {
+  margin-top: 22px;
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* ---------------- DETAILS + LISTS ---------------- */
+
+details {
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+}
+
+details summary {
   cursor: pointer;
   font-weight: 500;
-  transition: all 0.2s;
+  color: #334155;
 }
 
-.theme-toggle:hover { background: var(--accent); color: white; }
-
-.outbreaks-main {
-  flex: 1;
-  display: flex;
-  overflow: hidden;
+details ul {
+  margin-top: 8px;
+  padding-left: 18px;
 }
 
-.outbreaks-map-container { flex: 3; min-width: 0; }
-.outbreaks-leaflet-map { height: 100%; width: 100%; }
-
-/* Dark mode filter for tiles (applied via .dark-mode class) */
-.dark-mode .leaflet-layer,
-.dark-mode .leaflet-tile-pane,
-.dark-mode .leaflet-control-zoom-in,
-.dark-mode .leaflet-control-zoom-out,
-.dark-mode .leaflet-control-attribution {
-  filter: invert(92%) hue-rotate(180deg) brightness(95%) contrast(90%);
+details li {
+  font-size: 0.9rem;
+  color: #334155;
+  margin-bottom: 4px;
 }
 
-.outbreaks-sidebar {
-  flex: 2;
-  padding: 1.5rem;
-  overflow-y: auto;
-  background: var(--sidebar-bg);
-  border-left: 1px solid var(--border);
-  box-shadow: -2px 0 10px rgba(0,0,0,0.04);
+/* ---------------- HEALTH ADVICE ---------------- */
+
+.detail-card h4 {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0f172a;
 }
 
-.outbreaks-loading, .outbreaks-error {
-  height: 100vh;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  font-size: 1.25rem;
+.detail-card ul {
+  margin-top: 6px;
+  padding-left: 18px;
 }
 
-.outbreaks-error { color: #ef4444; }
-
-/* Welcome / Legend */
-.sidebar-welcome {
-  text-align: center;
-  margin-top: 40%;
+.detail-card li {
+  font-size: 0.9rem;
+  color: #334155;
+  margin-bottom: 4px;
 }
 
-.legend {
-  margin-top: 2rem;
-  padding: 1rem;
-  background: rgba(0,0,0,0.03);
+/* ---------------- LEAFLET FIXES ---------------- */
+
+/* Remove blue focus ring from invisible markers */
+.leaflet-interactive {
+  outline: none !important;
+}
+
+.side-pane::-webkit-scrollbar {
+  width: 6px;
+}
+
+.side-pane::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+/* ---------------- MAP LEGEND ---------------- */
+
+.map-legend {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 12px 14px;
   border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  font-size: 0.85rem;
+  color: #334155;
 }
 
-.legend-item { display: flex; align-items: center; gap: 0.75rem; margin: 0.5rem 0; }
-.dot {
-  width: 16px; height: 16px; border-radius: 50%;
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
 }
-.dot.red    { background: #ef4444; }
-.dot.orange { background: #f97316; }
-.dot.yellow { background: #eab308; }
-.dot.green  { background: #22c55e; }
 
-/* Detail view */
-.outbreak-detail h2 { margin: 0 0 1rem; font-size: 1.8rem; }
-.detail-meta { display: flex; gap: 1.5rem; color: #64748b; margin-bottom: 1.5rem; }
+.legend-item:last-child {
+  margin-bottom: 0;
+}
 
-.section-title { margin: 1.5rem 0 0.75rem; color: var(--accent); }
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
 
-details { margin: 1rem 0; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-summary { padding: 0.75rem 1rem; background: rgba(0,0,0,0.02); cursor: pointer; font-weight: 600; }
+/* Match your heatmap logic */
+.legend-dot.green {
+  background: #2f855a;
+}
 
-ul { padding-left: 1.25rem; margin: 0.75rem 1rem; }
-.symptom-list li, .disease-list li { display: flex; justify-content: space-between; padding: 0.4rem 0; }
-.sample-messages { font-size: 0.95em; color: #64748b; }
+.legend-dot.yellow {
+  background: #d69e2e;
+}
 
-.divider { border-color: var(--border); margin: 1.5rem 0; }
+.legend-dot.orange {
+  background: #dd6b20;
+}
 
-.health-advice h3 { color: var(--accent); }
-.advice { margin: 1.25rem 0; padding: 1rem; border-radius: 10px; }
-.dos   { background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.3); }
-.donts { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.3); }
-.seek  { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.3); }
-
-/* Popup styling */
-.leaflet-popup-content-wrapper { border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
-.popup-inner { padding: 0.5rem; min-width: 220px; }
-.popup-inner h3 { margin: 0 0 0.75rem; font-size: 1.2rem; }
-.popup-date { margin: 0.3rem 0; color: #64748b; }
-
-/* Marker pulse effect on hover (optional nice touch) */
-.outbreak-marker:hover { transform: scale(1.15); transition: transform 0.2s; }
+.legend-dot.red {
+  background: #c53030;
+}
