@@ -6,13 +6,11 @@ function Join() {
   const [showSignup, setShowSignup] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  // ─── LOGIN FORM STATE ───
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [loginEmailError, setLoginEmailError] = useState("");
 
-  // ─── SIGNUP FORM STATE ───
   const [signupName, setSignupName] = useState("");
   const [signupEmail, setSignupEmail] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
@@ -22,7 +20,6 @@ function Join() {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
-  // ─── LOGIN HANDLERS ───
   const handleLoginEmailChange = (e) => {
     const value = e.target.value;
     setLoginEmail(value);
@@ -46,11 +43,9 @@ function Join() {
     setTimeout(() => {
       setLoading(false);
       alert(`Login successful!\nEmail: ${loginEmail}\nRemember: ${rememberMe}`);
-      // → real app: call auth API, set token, redirect
     }, 2200);
   };
 
-  // ─── SIGNUP HANDLERS ───
   const handleSignupEmailChange = (e) => {
     const value = e.target.value;
     setSignupEmail(value);
@@ -81,7 +76,6 @@ function Join() {
       alert(
         `Signup simulation successful!\nName: ${signupName}\nEmail: ${signupEmail}`,
       );
-      // → real app: call register API, then redirect to login or auto-login
     }, 1800);
   };
 
@@ -95,8 +89,10 @@ function Join() {
         </div>
 
         <div className="wrapper">
-          {/* LOGIN CARD */}
-          <div className={`join-card ${showSignup ? "hidden" : ""}`} id="loginCard">
+          <div
+            className={`join-card ${showSignup ? "hidden" : ""}`}
+            id="loginCard"
+          >
             <h1 className="logo">HealthIQ</h1>
             <p className="tagline">Next-Gen Healthcare Platform</p>
 
@@ -130,10 +126,6 @@ function Join() {
                 <span className="bar" />
               </div>
 
-              {/* <small style={{ color: "#ff4d4f", minHeight: "20px" }}>
-              {loginEmailError}
-            </small> */}
-
               <div className="input-group">
                 <input
                   type="password"
@@ -144,16 +136,6 @@ function Join() {
                 <label>Password</label>
                 <span className="bar" />
               </div>
-
-              {/* <div className="remember">
-              <input
-                type="checkbox"
-                id="remember"
-                checked={rememberMe}
-                onChange={(e) => setRememberMe(e.target.checked)}
-              />
-              <label htmlFor="remember">Remember Me</label>
-            </div> */}
 
               <button type="submit" className="btn primary" disabled={loading}>
                 Login
@@ -171,7 +153,6 @@ function Join() {
             </p>
           </div>
 
-          {/* SIGNUP CARD */}
           <div
             className={`join-card ${!showSignup ? "hidden" : ""}`}
             id="signupCard"
@@ -202,10 +183,6 @@ function Join() {
                 <label>Email</label>
                 <span className="bar" />
               </div>
-
-              {/* <small style={{ color: "#ff4d4f", minHeight: "20px" }}>
-              {signupEmailError}
-            </small> */}
 
               <div className="input-group">
                 <input

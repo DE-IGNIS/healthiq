@@ -5,7 +5,7 @@ import heroImg from "../../assets/hero-health.svg";
 function Home() {
   return (
     <div className="home-page">
-      {/* HERO */}
+
       <section className="home-hero">
         <div className="hero-text">
           <h1>
@@ -25,15 +25,18 @@ function Home() {
         </div>
       </section>
 
-      {/* FEATURES */}
       <section className="features-section">
-        <h2 className="features-title">Explore Features</h2>
+        <h2 className="features-title">Explore Our Features</h2>
 
         <div className="container">
           <div className="card">
             <Link className="feature-link" to="chat">
-              <h2>Health Chat</h2>
-              <p>Health Chat ke bare me likhna hai</p>
+              <h2>Community Health Network</h2>
+              <p>
+                Public discussions on health-related topics , expert
+                verification for ensuring medical credibility. In Real time
+                extracts disease and location insights from discussions.
+              </p>
             </Link>
           </div>
 
@@ -46,25 +49,37 @@ function Home() {
 
           <div className="card">
             <Link className="feature-link" to="trivia">
-              <h2>Health Trivia</h2>
-              <p>Health trivia ke bare me likhna hai.</p>
+              <h2>Health Awareness Trivia</h2>
+              <p>
+                Structured health quizzes focused on hygiene,
+                medicines,preventive care, essential health knowledge in
+                general.
+              </p>
             </Link>
           </div>
 
           <div className="card">
             <Link className="feature-link" to="dietgen">
-              <h2>Ai Enhanched Diet plan generator</h2>
-              <p>Ai Enhanched Diet plan generator ke bare me likhna hai.</p>
+              <h2>Adaptive Diet Plan Generator</h2>
+              <p>
+                Personalized calorie requirements using BMR and balanced
+                macronutrient distribution with diet plans aligned with
+                realistic and sustainable Indian food habits.
+              </p>
             </Link>
           </div>
 
           <div className="card">
-            <Link className="feature-link" to="feature5">
-              <h2>Ingredient list tracker</h2>
-              <p>Ingredient list tracker ke bare me likhna hai.</p>
+            <Link className="feature-link" to="insight">
+              <h2>Ingredient Insight</h2>
+              <p>
+                Providing simplified information on common/uncommon food
+                ingredients with health benefits and potential risks.
+                Highlighting hidden ingredient concerns.
+              </p>
             </Link>
           </div>
-          
+
           {/* <div className="card">
             <Link className="feature-link" to="feature6">
               <h2>Feature6</h2>
