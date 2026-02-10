@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Client, Databases, ID, Query, Permission, Role } from "appwrite";
 import "./styling/Chat.css";
 
-// Appwrite setup (move to a separate file later if you want)
 const client = new Client()
   .setEndpoint("https://cloud.appwrite.io/v1")
   .setProject(import.meta.env.VITE_APPWRITE_PROJECT_ID);
@@ -24,29 +23,12 @@ function Chat() {
   });
   const [loading, setLoading] = useState(true);
 
-  // Load comments from Appwrite on mount
-  // useEffect(() => {
-  //   loadComments();
-
-  //   // Optional: real-time updates (new comments appear instantly)
-  //   const unsubscribe = client.subscribe(
-  //     `databases.${DATABASE_ID}.collections.${COLLECTION_ID}.documents`,
-  //     (response) => {
-  //       if (response.events.includes("databases.*.collections.*.documents.*.create")) {
-  //         loadComments(); // refresh list when new comment is added
-  //       }
-  //     }
-  //   );
-
-  //   return () => unsubscribe(); // cleanup
-  // }, []);
   useEffect(() => {
     loadComments();
 
     const unsubscribe = client.subscribe(
       `databases.${DATABASE_ID}.collections.${COLLECTION_ID}.documents`,
       (response) => {
-        // Only handle NEW comments
         if (
           response.events.includes(
             "databases.*.collections.*.documents.*.create",
@@ -66,7 +48,6 @@ function Chat() {
             createdAt: doc.createdAt,
           };
 
-          // Avoid duplicates (important!)
           setAllComments((prev) => {
             if (prev.some((c) => c.id === newComment.id)) return prev;
             return [newComment, ...prev];
@@ -84,9 +65,7 @@ function Chat() {
       const response = await databases.listDocuments(
         DATABASE_ID,
         COLLECTION_ID,
-        [
-          Query.orderDesc("createdAt"), // newest first
-        ],
+        [Query.orderDesc("createdAt")],
       );
 
       const comments = response.documents.map((doc) => ({
@@ -112,7 +91,6 @@ function Chat() {
 
   const handleVote = async (commentId, voteType) => {
     try {
-      // Get current comment
       const comment = await databases.getDocument(
         DATABASE_ID,
         COLLECTION_ID,
@@ -130,7 +108,6 @@ function Chat() {
         downvotes: updatedDown,
       });
 
-      // Optimistic UI update
       setAllComments((prev) =>
         prev.map((c) =>
           c.id === commentId
@@ -153,7 +130,7 @@ function Chat() {
       location: "Unknown",
       upvotes: 0,
       downvotes: 0,
-      isExpertVerified: false, // new comments are unverified by default
+      isExpertVerified: false,
       createdAt: new Date().toISOString(),
     };
 
@@ -163,25 +140,10 @@ function Chat() {
         COLLECTION_ID,
         ID.unique(),
         newComment,
-        [
-          Permission.read(Role.any()), // anyone can read
-          Permission.write(Role.any()), // anyone can vote/comment (adjust later)
-        ],
+        [Permission.read(Role.any()), Permission.write(Role.any())],
       );
-
-      // Optimistic UI + close modal
-      // setAllComments((prev) => [
-      //   { ...newComment, id: "temp-" + Date.now() },
-      //   ...prev,
-      // ]);
-      // setFormData({ username: "", category: "medicine", message: "" });
-      // setModalOpen(false);
-
-      // // Real fetch will replace the temp one
-      // setTimeout(loadComments, 500);
       setFormData({ username: "", category: "medicine", message: "" });
       setModalOpen(false);
-      // Real-time subscription will add the comment automatically
     } catch (err) {
       console.error("Failed to post comment:", err);
       alert("Could not post comment. Try again.");
@@ -193,7 +155,6 @@ function Chat() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Split & filter logic (same as before)
   const verifiedComments = allComments.filter(
     (c) => c.isExpertVerified === true,
   );
