@@ -1,6 +1,12 @@
-body{
-    background-color: #eeeef4dc;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
-#root {
+
+body {
+  background: #f4f6fb;
+  color: #111;
   min-height: 100vh;
 }
