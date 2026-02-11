@@ -25,41 +25,25 @@ HealthIQ is a sophisticated health information platform that addresses the gap i
 The project follows a scalable **Component-Based Architecture**:
 
 ```
-d:\dietiq\
-├── .env                          # Environment variables
-├── .gitignore
-├── eslint.config.js              # ESLint configuration
-├── index.html                    # Main HTML entry point
+d:\dietiq
+├── .env
+├── eslint.config.js
+├── index.html
 ├── package-lock.json
-├── package.json                  # Project dependencies and scripts
-├── README.md                     # Project documentation
-├── vercel.json                   # Vercel deployment configuration
-├── vite.config.js                # Vite build configuration
-├── public/                       # Static assets
-│   └── data/                     # JSON data files for heatmap and other features
-└── src/                          # Source code
-    ├── App.css                   # Global application styles
-    ├── App.jsx                   # Main application router
-    ├── index.css                 # Base styles
-    ├── main.jsx                  # Application entry point
-    ├── assets/                   # Images, icons, and media files
-    ├── components/               # Reusable UI components
-    ├── constants/                # Constant values and configuration
-    ├── data/                     # Static data files (disease information)
-    ├── layouts/                  # Layout wrappers (e.g., Navbar)
-    └── pages/                    # Feature-specific pages
-        ├── About.jsx             # About page
-        ├── Content.jsx           # Disease information content
-        ├── Faq.jsx               # Frequently asked questions
-        ├── Join.jsx              # Authentication page
-        ├── Landing.jsx           # Landing page
-        └── home/                 # Home page features
-            ├── Chat.jsx          # Community health network
-            ├── DietGen.jsx       # Diet plan generator
-            ├── HeatMap.jsx       # Disease heatmap
-            ├── Home.jsx          # Home page
-            ├── Insight.jsx       # Ingredient insights
-            └── Trivia.jsx        # Health trivia quiz
+├── package.json
+├── README.md
+├── vercel.json
+├── vite.config.js
+├── public
+│   └── data
+└── src
+    ├── assets
+    ├── components
+    ├── constants
+    ├── data
+    ├── layouts
+    └── pages
+        └── home\
 ```
 
 ## 🛠️ Setup Instructions
