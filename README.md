@@ -1,6 +1,6 @@
 # HealthIQ - AI-Powered Health Information and Community Platform
 
-A comprehensive health platform that combines artificial intelligence with community-driven insights to provide accessible, multilingual health guidance for diverse communities.
+A comprehensive health platform that combines artificial intelligence with community-driven insights to provide accessible, a health guidance for diverse communities.
 
 ## 🎯 Project Overview
 
