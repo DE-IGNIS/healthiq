@@ -1,0 +1,214 @@
+/* ---------------- EMPTY STATE ---------------- */
+
+.empty-panel {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-card {
+  max-width: 380px;
+  padding: 32px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #f0fdfa, #ecfeff);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.empty-card h2 {
+  margin-top: 16px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #0f766e;
+}
+
+.empty-card p {
+  margin-top: 10px;
+  color: #334155;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.empty-card .hint {
+  margin-top: 16px;
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+/* Pulse animation (top dot) */
+.pulse-dot {
+  width: 14px;
+  height: 14px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: #14b8a6;
+  animation: pulse 1.6s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(20, 184, 166, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(20, 184, 166, 0);
+  }
+}
+
+/* ---------------- SELECTED DETAIL CARD ---------------- */
+
+.detail-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.detail-card h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+/* Meta info (date + z-score) */
+.meta {
+  font-size: 0.9rem;
+  color: #475569;
+  margin-bottom: 16px;
+}
+
+/* Section headings */
+.section-title {
+  margin-top: 22px;
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* ---------------- DETAILS + LISTS ---------------- */
+
+details {
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+}
+
+details summary {
+  cursor: pointer;
+  font-weight: 500;
+  color: #334155;
+}
+
+details ul {
+  margin-top: 8px;
+  padding-left: 18px;
+}
+
+details li {
+  font-size: 0.9rem;
+  color: #334155;
+  margin-bottom: 4px;
+}
+
+/* ---------------- HEALTH ADVICE ---------------- */
+
+.detail-card h4 {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.detail-card ul {
+  margin-top: 6px;
+  padding-left: 18px;
+}
+
+.detail-card li {
+  font-size: 0.9rem;
+  color: #334155;
+  margin-bottom: 4px;
+}
+
+/* ---------------- LEAFLET FIXES ---------------- */
+
+/* Remove blue focus ring from invisible markers */
+.leaflet-interactive {
+  outline: none !important;
+}
+
+.side-pane::-webkit-scrollbar {
+  width: 6px;
+}
+
+.side-pane::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+/* ---------------- MAP LEGEND ---------------- */
+
+.map-legend {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 12px 14px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  font-size: 0.85rem;
+  color: #334155;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.legend-item:last-child {
+  margin-bottom: 0;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+/* Match your heatmap logic */
+.legend-dot.green {
+  background: #2f855a;
+}
+
+.legend-dot.yellow {
+  background: #d69e2e;
+}
+
+.legend-dot.orange {
+  background: #dd6b20;
+}
+
+.legend-dot.red {
+  background: #c53030;
+}

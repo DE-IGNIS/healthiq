@@ -1,0 +1,102 @@
+h1 {
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 2rem;
+  text-align: center;
+  letter-spacing: -0.5px;
+  position: relative;
+}
+
+.macro-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+  margin-bottom: 2.5rem;
+}
+
+.macro-item {
+  background: white;
+  border-radius: 12px;
+  padding: 1.4rem 1.6rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+  transition: all 0.25s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.macro-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(67, 97, 238, 0.12);
+  border-color: #4361ee;
+}
+
+.macro-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.macro-value {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4361ee;
+}
+
+.download-btn {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  margin: 2rem auto 1rem;
+  padding: 1rem 1.5rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: white;
+  background: #4361ee;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(67, 97, 238, 0.3);
+}
+
+.download-btn:hover {
+  background: #3f37c9;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(67, 97, 238, 0.4);
+}
+
+.download-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(67, 97, 238, 0.25);
+}
+
+.download-btn:disabled {
+  background: #a0a4ff;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Responsive adjustments */
+@media (min-width: 480px) {
+  .macro-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .macros-container {
+    padding: 3rem 2.5rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .macro-item {
+    padding: 1.6rem 2rem;
+  }
+}

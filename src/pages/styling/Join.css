@@ -1,0 +1,242 @@
+/* =========================
+   JOIN PAGE – LIGHT HEALTH THEME
+========================= */
+
+.join-body {
+  background: linear-gradient(
+    180deg,
+    #f0fbf8 0%,
+    #e6f7f4 40%,
+    #ffffff 100%
+  );
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  color: #214e4a;
+}
+
+/* =========================
+   SOFT HEALTH GLOW
+========================= */
+.particles {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 25%, rgba(56,161,105,0.18), transparent 30%),
+    radial-gradient(circle at 80% 65%, rgba(47,95,90,0.15), transparent 35%);
+  animation: floatGlow 12s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+@keyframes floatGlow {
+  to {
+    transform: scale(1.1) translateY(-20px);
+  }
+}
+
+/* =========================
+   LOADER
+========================= */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: rgba(240,251,248,0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.ring {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 6px solid rgba(33,78,74,0.15);
+  border-top: 6px solid #38a169;
+  animation: spin 1s linear infinite, pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  50% { transform: scale(1.08); }
+}
+
+/* =========================
+   WRAPPER
+========================= */
+.wrapper {
+  perspective: 1400px;
+}
+
+/* =========================
+   GLASS CARD
+========================= */
+.join-card {
+  width: 420px;
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(18px);
+  padding: 36px;
+  border-radius: 26px;
+  box-shadow:
+    0 30px 60px rgba(0,0,0,0.12),
+    0 8px 20px rgba(0,0,0,0.08);
+  border: 1px solid rgba(33,78,74,0.15);
+  animation: cardEnter 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+/* =========================
+   LOGO
+========================= */
+.logo {
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #214e4a, #38a169);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tagline {
+  text-align: center;
+  margin-bottom: 26px;
+  opacity: 0.75;
+  font-size: 14px;
+}
+
+/* =========================
+   SWITCHER
+========================= */
+.switcher {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.switcher button {
+  flex: 1;
+  padding: 11px;
+  border-radius: 16px;
+  border: 1px solid rgba(33,78,74,0.2);
+  background: rgba(240,251,248,0.8);
+  color: #214e4a;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.switcher .active {
+  background: linear-gradient(90deg, #38a169, #2f855a);
+  color: white;
+  border: none;
+  transform: scale(1.05);
+}
+
+/* =========================
+   FORM
+========================= */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* INPUTS */
+.input-group {
+  position: relative;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 13px 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(33,78,74,0.2);
+  background: rgba(255,255,255,0.9);
+  color: #214e4a;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.input-group input:focus {
+  border-color: #38a169;
+}
+
+.input-group label {
+  position: absolute;
+  left: 14px;
+  top: 13px;
+  color: #6f8f8b;
+  transition: 0.3s ease;
+  pointer-events: none;
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+  top: -8px;
+  font-size: 12px;
+  background: #ffffff;
+  padding: 0 6px;
+  color: #38a169;
+}
+
+/* =========================
+   BUTTON
+========================= */
+.btn {
+  padding: 13px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.primary {
+  background: linear-gradient(90deg, #38a169, #2f855a);
+  color: white;
+  transition: 0.3s ease;
+}
+
+.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(56,161,105,0.35);
+}
+
+/* =========================
+   ERROR
+========================= */
+input.invalid {
+  border-color: #ef4444;
+}
+
+/* =========================
+   FOOTER
+========================= */
+.bottom {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 14px;
+}
+
+.bottom span {
+  color: #38a169;
+  cursor: pointer;
+  font-weight: 500;
+}

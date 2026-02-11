@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "id": "1738051200000",
+      "username": "Dr. Sarah Johnson",
+      "message": "Regular hand washing for 20 seconds with soap can prevent up to 80% of common infections. This is especially important before eating and after using the restroom.",
+      "category": "Medicine",
+      "location": "New York, USA",
+      "upvotes": 823,
+      "downvotes": 12,
+      "isExpertVerified": true,
+      "isCommunityVerified": false,
+      "createdAt": "2026-01-28T10:00:00.000Z"
+    },
+    {
+      "id": "1738047600000",
+      "username": "Mike Peterson",
+      "message": "Progressive overload is key to building muscle. Gradually increase weight, reps, or sets each week. Don't stay at the same level for too long.",
+      "category": "Fitness",
+      "location": "Los Angeles, USA",
+      "upvotes": 567,
+      "downvotes": 23,
+      "isExpertVerified": false,
+      "isCommunityVerified": true,
+      "createdAt": "2026-01-28T09:00:00.000Z"
+    },
+    {
+      "id": "1737964800000",
+      "username": "Dr. Emily Chen",
+      "message": "Taking short breaks every 60-90 minutes during work significantly improves focus and reduces stress. Try the Pomodoro technique for better productivity.",
+      "category": "Mental Health",
+      "location": "San Francisco, USA",
+      "upvotes": 1042,
+      "downvotes": 18,
+      "isExpertVerified": true,
+      "isCommunityVerified": false,
+      "createdAt": "2026-01-27T10:00:00.000Z"
+    },
+    {
+      "id": "1738048800000",
+      "username": "Lisa Martinez",
+      "message": "Drinking water 30 minutes before meals can help with digestion and portion control. Aim for at least 8 glasses of water daily.",
+      "category": "Nutrition",
+      "location": "Miami, USA",
+      "upvotes": 689,
+      "downvotes": 34,
+      "isExpertVerified": false,
+      "isCommunityVerified": true,
+      "createdAt": "2026-01-28T11:00:00.000Z"
+    },
+    {
+      "id": "1738046400000",
+      "username": "Dr. James Wilson",
+      "message": "Proper warm-up before exercise reduces injury risk by 50%. Spend at least 5-10 minutes on dynamic stretching before your workout.",
+      "category": "Fitness",
+      "location": "Chicago, USA",
+      "upvotes": 912,
+      "downvotes": 15,
+      "isExpertVerified": true,
+      "isCommunityVerified": false,
+      "createdAt": "2026-01-28T08:00:00.000Z"
+    },
+    {
+      "id": "1738045200000",
+      "username": "John Smith",
+      "message": "I've been doing intermittent fasting for 3 months and lost 15 pounds. I eat only between 12pm and 8pm. Feeling great!",
+      "category": "Nutrition",
+      "location": "Seattle, USA",
+      "upvotes": 234,
+      "downvotes": 45,
+      "isExpertVerified": false,
+      "isCommunityVerified": false,
+      "createdAt": "2026-01-28T10:30:00.000Z"
+    },
+    {
+      "id": "1738044000000",
+      "username": "Rachel Green",
+      "message": "Meditation apps have changed my life. Just 10 minutes a day helps me manage anxiety. Highly recommend Headspace or Calm.",
+      "category": "Mental Health",
+      "location": "Boston, USA",
+      "upvotes": 412,
+      "downvotes": 28,
+      "isExpertVerified": false,
+      "isCommunityVerified": false,
+      "createdAt": "2026-01-28T07:00:00.000Z"
+    },
+    {
+      "id": "1737878400000",
+      "username": "David Brown",
+      "message": "Running in the morning gives me energy for the whole day. Started with just 1 mile, now up to 5 miles daily!",
+      "category": "Fitness",
+      "location": "Denver, USA",
+      "upvotes": 189,
+      "downvotes": 12,
+      "isExpertVerified": false,
+      "isCommunityVerified": false,
+      "createdAt": "2026-01-26T10:00:00.000Z"
+    },
+    {
+      "id": "1738047000000",
+      "username": "Amanda Lee",
+      "message": "Always keep a first aid kit at home. Basic items: bandages, antiseptic, pain relievers, thermometer. You never know when you'll need it.",
+      "category": "Medicine",
+      "location": "Austin, USA",
+      "upvotes": 301,
+      "downvotes": 8,
+      "isExpertVerified": false,
+      "isCommunityVerified": false,
+      "createdAt": "2026-01-28T09:30:00.000Z"
+    },
+    {
+      "id": "1737965400000",
+      "username": "Chris Taylor",
+      "message": "Meal prepping on Sundays saves me time and helps me eat healthier during the week. I make 5 lunches and dinners at once.",
+      "category": "Nutrition",
+      "location": "Portland, USA",
+      "upvotes": 456,
+      "downvotes": 31,
+      "isExpertVerified": false,
+      "isCommunityVerified": false,
+      "createdAt": "2026-01-27T10:10:00.000Z"
+    }
+  ]
+}

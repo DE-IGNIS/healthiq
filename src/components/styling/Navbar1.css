@@ -1,0 +1,126 @@
+.main-container {
+  background: #ffffff;
+  padding: 14px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LOGO WRAPPER */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.25s ease;
+}
+
+/* logo image */
+.logo {
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+/* text */
+.nav-logo p {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Sans Unicode";
+  font-size: 24px;
+  font-weight: 700;
+  color: #214e4a;
+  margin-left: 10px;
+  transition: color 0.25s ease;
+}
+
+/* hover effect */
+.nav-logo:hover .logo {
+  transform: scale(1.05);
+  filter: drop-shadow(0 4px 8px rgba(138, 207, 193, 0.6));
+}
+
+.nav-logo:hover p {
+  color: #2f7d70;
+}
+
+/* NAV LINKS */
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+
+.nav-link {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Sans Unicode";
+  text-decoration: none;
+  color: #214e4a;
+  font-size: 16px;
+  font-weight: 500;
+  position: relative;
+  padding: 6px 2px;
+}
+
+/* underline hover */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: #8acfc1;
+  transition: width 0.25s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* JOIN BUTTON */
+.nav-link-join {
+  margin-left: 16px;
+  background: #8acfc1;
+  color: #ffffff;
+  padding: 8px 22px;
+  border-radius: 24px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.25s ease;
+}
+
+.nav-link-join:hover {
+  background: #67e9d1;
+}
+
+/* LOGO WRAPPER */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* LOGO ICON */
+.logo {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* LOGO TEXT */
+.nav-logo p {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Sans Unicode";
+  font-size: 24px;
+  font-weight: 900;
+  color: #214e4a;
+  margin-left: 10px;
+  letter-spacing: 0.3px;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.nav-logo:hover .logo {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 8px rgba(138, 207, 193, 0.6));
+}
+
+.nav-logo:hover p {
+  color: #1f5f55;
+  text-shadow: 0 0 12px rgba(138, 207, 193, 0.6);
+}
+
