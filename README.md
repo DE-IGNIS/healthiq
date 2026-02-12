@@ -93,4 +93,4 @@ firebase deploy
 
 ---
 
-**Built with ❤️ by Heal-gorithms for the future of digital rehabilitation**
+**Built with ❤️ by Team-DietIQ for the future of digital rehabilitation**
