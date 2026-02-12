@@ -59,7 +59,7 @@ Create a `.env` file in the root directory with the following variables:
 VITE_APPWRITE_PROJECT_ID = "your_appwrite_project_id"
 VITE_APPWRITE_ENDPOINT = "https://your_appwrite_endpoint/v1"
 VITE_APPWRITE_DATABASE_ID = "your_database_id"
-VITE_APPWRITE_COLLECTION_ID = "comments"
+VITE_APPWRITE_COLLECTION_ID = "collection_name"
 VITE_GEMINI_API_KEY = "your_gemini_api_key"
 ```
 
@@ -109,7 +109,7 @@ npm run build
 - **Privacy Focused**: No personal health data stored unnecessarily
 
 ## 🌍 Accessibility Features
-- **Multilingual Support**: Designed for regional language adaptation
+- **Multilingual Support**: Designed for regional language adaptation  (Future adoption)
 - **Simple Interface**: Easy-to-use interface for users with varying digital literacy
 - **Community Driven**: Incorporates local health practices and knowledge
 
@@ -120,7 +120,6 @@ npm run build
 - [x] **Diet Generator**: Personalized diet planning with PDF export
 - [x] **Ingredient Insights**: AI-powered ingredient safety checker
 - [x] **Disease Education**: Comprehensive database of common diseases
-- [x] **Responsive UI**: Mobile-friendly interface for diverse users
 
 ---
 
