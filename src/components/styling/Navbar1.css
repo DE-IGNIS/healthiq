@@ -6,7 +6,6 @@
   align-items: center;
 }
 
-/* LOGO WRAPPER */
 .nav-logo {
   display: flex;
   align-items: center;
@@ -14,12 +13,10 @@
   transition: transform 0.25s ease;
 }
 
-/* logo image */
 .logo {
   transition: transform 0.25s ease, filter 0.25s ease;
 }
 
-/* text */
 .nav-logo p {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Sans Unicode";
   font-size: 24px;
@@ -29,7 +26,6 @@
   transition: color 0.25s ease;
 }
 
-/* hover effect */
 .nav-logo:hover .logo {
   transform: scale(1.05);
   filter: drop-shadow(0 4px 8px rgba(138, 207, 193, 0.6));
@@ -39,7 +35,6 @@
   color: #2f7d70;
 }
 
-/* NAV LINKS */
 .navbar {
   display: flex;
   align-items: center;
@@ -56,7 +51,6 @@
   padding: 6px 2px;
 }
 
-/* underline hover */
 .nav-link::after {
   content: "";
   position: absolute;
@@ -72,7 +66,6 @@
   width: 100%;
 }
 
-/* JOIN BUTTON */
 .nav-link-join {
   margin-left: 16px;
   background: #8acfc1;
@@ -89,7 +82,6 @@
   background: #67e9d1;
 }
 
-/* LOGO WRAPPER */
 .nav-logo {
   display: flex;
   align-items: center;
@@ -97,12 +89,10 @@
   cursor: pointer;
 }
 
-/* LOGO ICON */
 .logo {
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-/* LOGO TEXT */
 .nav-logo p {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Sans Unicode";
   font-size: 24px;
@@ -113,7 +103,6 @@
   transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
-/* HOVER EFFECT */
 .nav-logo:hover .logo {
   transform: scale(1.1);
   filter: drop-shadow(0 0 8px rgba(138, 207, 193, 0.6));

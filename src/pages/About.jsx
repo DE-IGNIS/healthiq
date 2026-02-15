@@ -3,7 +3,6 @@ import "./styling/About.css";
 function About() {
   return (
     <div className="about-wrapper">
-      {/* HERO */}
       <section className="about-hero">
         <h1>About HealthIQ</h1>
         <p>
@@ -12,7 +11,6 @@ function About() {
         </p>
       </section>
 
-      {/* WHAT WE OFFER */}
       <section className="about-section">
         <h2>What We Offer</h2>
 
@@ -59,7 +57,6 @@ function About() {
         </div>
       </section>
 
-      {/* HOW IT WORKS */}
       <section className="about-section light">
         <h2>How HealthIQ Works</h2>
         <p className="about-text">
@@ -70,7 +67,6 @@ function About() {
         </p>
       </section>
 
-      {/* OUR PURPOSE */}
       <section className="about-section vision">
         <h2>Our Purpose</h2>
         <p className="about-text">
@@ -79,7 +75,6 @@ function About() {
         </p>
       </section>
 
-      {/* CONTACT */}
       <section className="about-section contact">
         <h2>Need Help or Have Questions?</h2>
 

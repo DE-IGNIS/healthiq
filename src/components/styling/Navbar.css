@@ -1,17 +1,15 @@
-/* MAIN NAV CONTAINER */
 .main-container {
   background: linear-gradient(135deg, #e8f7f4, #ffffff);
   padding: 14px 28px;
   margin: 20px auto;
   max-width: 1100px;
-  border-radius: 999px; /* pill shape */
+  border-radius: 999px; 
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 12px 30px rgba(15, 118, 110, 0.12);
 }
 
-/* LOGO WRAPPER */
 .nav-logo {
   display: flex;
   align-items: center;
@@ -20,12 +18,10 @@
   transition: transform 0.25s ease;
 }
 
-/* LOGO ICON */
 .logo {
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-/* LOGO TEXT */
 .nav-logo p {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Sans Unicode";
   font-size: 24px;
@@ -36,7 +32,6 @@
   transition: color 0.3s ease;
 }
 
-/* LOGO HOVER */
 .nav-logo:hover .logo {
   transform: scale(1.1);
   filter: drop-shadow(0 0 10px rgba(138, 207, 193, 0.8));
@@ -46,14 +41,12 @@
   color: #0f766e;
 }
 
-/* NAV LINKS */
 .navbar {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-/* NORMAL LINKS */
 .nav-link {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Sans Unicode";
   text-decoration: none;
@@ -66,13 +59,11 @@
   transition: background 0.25s ease, color 0.25s ease;
 }
 
-/* SOFT HOVER BACKGROUND */
 .nav-link:hover {
   background: rgba(138, 207, 193, 0.2);
   color: #0f766e;
 }
 
-/* FLOATING UNDERLINE */
 .nav-link::after {
   content: "";
   position: absolute;
@@ -90,7 +81,6 @@
   width: 60%;
 }
 
-/* JOIN BUTTON */
 .nav-link-join {
   margin-left: 10px;
   background: linear-gradient(135deg, #0f766e, #67e9d1);
@@ -104,7 +94,6 @@
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* JOIN HOVER */
 .nav-link-join:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 26px rgba(15, 118, 110, 0.45);

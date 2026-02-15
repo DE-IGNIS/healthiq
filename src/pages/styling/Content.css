@@ -277,9 +277,7 @@ body {
   font-size: 15px;
 }
 
-/* ================================
-   CLOSE BUTTON
-================================ */
+
 .close-btn {
   position: absolute;
   top: 20px;
@@ -297,9 +295,6 @@ body {
   opacity: 0.75;
 }
 
-/* ================================
-   HIGHLIGHT
-================================ */
 mark {
   background: rgba(79, 70, 229, 0.2);
   color: inherit;
@@ -307,9 +302,7 @@ mark {
   border-radius: 4px;
 }
 
-/* ================================
-   KEYFRAMES
-================================ */
+
 @keyframes modalEnter {
   from {
     transform: translateY(40px);
@@ -376,7 +369,6 @@ mark {
   font-weight: 700;
   color: #fff;
 
-  /* NEW */
   background: rgba(0, 0, 0, 0.45);
   padding: 8px 16px;
   border-radius: 12px;

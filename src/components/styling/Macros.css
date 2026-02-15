@@ -80,7 +80,6 @@ h1 {
   box-shadow: none;
 }
 
-/* Responsive adjustments */
 @media (min-width: 480px) {
   .macro-grid {
     grid-template-columns: repeat(2, 1fr);
