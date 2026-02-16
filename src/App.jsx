@@ -8,6 +8,7 @@ import Landing from "./pages/Landing";
 import Join from "./pages/Join";
 import { DietGen, Chat, HeatMap, Trivia, Insight } from "./pages/home";
 import Layout from "./layouts/Layout";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
         {/* Join Page route  */}
         <Route path="/join" element={<Join />} />
       </Routes>
+      <Analytics />
     </>
   );
 }
